@@ -9,6 +9,7 @@ public class HeroInputReader : MonoBehaviour
 {
     [SerializeField] private Hero _hero;
     private HeroInputAction _inputActions;
+   
 
 
     private void Awake()
@@ -37,7 +38,7 @@ public class HeroInputReader : MonoBehaviour
         _inputActions.Hero.SuperThrow.canceled += OnDoSuperThrow;
 
         _inputActions.Hero.Dash.performed += OnDash;
-       _inputActions.Hero.Dash.canceled += OnDash;
+        _inputActions.Hero.Dash.canceled += OnDash;
 
 
     }
@@ -101,13 +102,13 @@ public class HeroInputReader : MonoBehaviour
      if (context.canceled)
       {
           _hero.UseInventory();
-     }
+        }
     }
     //public void OnUseInventory(InputAction.CallbackContext context)
     // {
-     // if (context.canceled)
-      //{
-     //  _hero.UseInventory();
+    // if (context.canceled)
+    //{
+    //  _hero.UseInventory();
     // }
     // }
 
@@ -120,6 +121,8 @@ public class HeroInputReader : MonoBehaviour
             _hero.NextItem();
         }
     }
+
+   
 
     public void OnDash(InputAction.CallbackContext context)
     {

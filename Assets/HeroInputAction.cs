@@ -265,6 +265,34 @@ public partial class @HeroInputAction : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Hud"",
+            ""id"": ""7b953316-ffa9-416e-a783-3a0ee9e15495"",
+            ""actions"": [
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""7882f6d9-ee6f-4c27-986a-92a6d5d806fb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""59ced0da-e3a4-43a4-a6c7-df0afb28b6f7"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -297,6 +325,9 @@ public partial class @HeroInputAction : IInputActionCollection2, IDisposable
         m_Hero_Dash = m_Hero.FindAction("Dash", throwIfNotFound: true);
         m_Hero_Shield = m_Hero.FindAction("Shield", throwIfNotFound: true);
         m_Hero_SuperThrow = m_Hero.FindAction("SuperThrow", throwIfNotFound: true);
+        // Hud
+        m_Hud = asset.FindActionMap("Hud", throwIfNotFound: true);
+        m_Hud_Menu = m_Hud.FindAction("Menu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -449,6 +480,39 @@ public partial class @HeroInputAction : IInputActionCollection2, IDisposable
         }
     }
     public HeroActions @Hero => new HeroActions(this);
+
+    // Hud
+    private readonly InputActionMap m_Hud;
+    private IHudActions m_HudActionsCallbackInterface;
+    private readonly InputAction m_Hud_Menu;
+    public struct HudActions
+    {
+        private @HeroInputAction m_Wrapper;
+        public HudActions(@HeroInputAction wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Menu => m_Wrapper.m_Hud_Menu;
+        public InputActionMap Get() { return m_Wrapper.m_Hud; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(HudActions set) { return set.Get(); }
+        public void SetCallbacks(IHudActions instance)
+        {
+            if (m_Wrapper.m_HudActionsCallbackInterface != null)
+            {
+                @Menu.started -= m_Wrapper.m_HudActionsCallbackInterface.OnMenu;
+                @Menu.performed -= m_Wrapper.m_HudActionsCallbackInterface.OnMenu;
+                @Menu.canceled -= m_Wrapper.m_HudActionsCallbackInterface.OnMenu;
+            }
+            m_Wrapper.m_HudActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Menu.started += instance.OnMenu;
+                @Menu.performed += instance.OnMenu;
+                @Menu.canceled += instance.OnMenu;
+            }
+        }
+    }
+    public HudActions @Hud => new HudActions(this);
     private int m_keyboardandmouseSchemeIndex = -1;
     public InputControlScheme keyboardandmouseScheme
     {
@@ -469,5 +533,9 @@ public partial class @HeroInputAction : IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnShield(InputAction.CallbackContext context);
         void OnSuperThrow(InputAction.CallbackContext context);
+    }
+    public interface IHudActions
+    {
+        void OnMenu(InputAction.CallbackContext context);
     }
 }

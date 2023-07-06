@@ -243,6 +243,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Hud",
+            "id": "7b953316-ffa9-416e-a783-3a0ee9e15495",
+            "actions": [
+                {
+                    "name": "Menu",
+                    "type": "Button",
+                    "id": "7882f6d9-ee6f-4c27-986a-92a6d5d806fb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "59ced0da-e3a4-43a4-a6c7-df0afb28b6f7",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -22,7 +22,7 @@ public class Creature : MonoBehaviour
     protected PlaySoundsComponent Sounds;
     protected bool IsGrounded;
     protected bool _isJumping;
-
+    protected HealthComponent _health;
 
     private static readonly int IsGroundKey = Animator.StringToHash("is-ground");
     private static readonly int IsRunning = Animator.StringToHash("is-running");
@@ -36,7 +36,7 @@ public class Creature : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         Sounds = GetComponent<PlaySoundsComponent>();
-
+        _health = GetComponent<HealthComponent>();
     }
 
     public void SetDirection(Vector2 direction)
@@ -46,15 +46,17 @@ public class Creature : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (_groundCheck == null) return;
         IsGrounded = _groundCheck.IsTouchingLayer;
     }
     private void FixedUpdate()
     {
         var xVelocity = CalculateXVelocity();
         var yVelocity = CalculateYVelocity();
-
+        if (Rigidbody == null) return;
         Rigidbody.velocity = new Vector2(xVelocity, yVelocity);
 
+        if (Animator == null) return;
         Animator.SetBool(IsGroundKey, IsGrounded);
         Animator.SetFloat(VerticalVelocity, Rigidbody.velocity.y);
         Animator.SetBool(IsRunning, Direction.x != 0);
@@ -73,7 +75,7 @@ public class Creature : MonoBehaviour
     }
     protected virtual float CalculateYVelocity()
     {
-
+    
         var yVelocity = Rigidbody.velocity.y;
 
         var isJumpPressing = Direction.y > 0;
@@ -114,6 +116,7 @@ public class Creature : MonoBehaviour
 
     protected void DoJumpVfx()
     {
+        if (_particles == null) return;
         _particles.Spawn("Jump");
         Sounds.Play("Jump");
     }
@@ -139,20 +142,23 @@ public class Creature : MonoBehaviour
     public virtual void TakeDamage(int damage)
 
     {
-
+      
+        _health.TakeDmg(damage);
         _isJumping = false;
+        if (Animator == null) return;
         Animator.SetTrigger(Hit);
         Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, _damageVelocity);
-        print(1);
+        
     }
     public virtual void Attack()
     {
-
+        if (Animator == null) return;
         Animator.SetTrigger(AttackKey);
         Sounds.Play("Melee");
     }
     public void OnAttackEnemy()
     {
+        if (_attackRange == null) return;
         _attackRange.Check();
 
 

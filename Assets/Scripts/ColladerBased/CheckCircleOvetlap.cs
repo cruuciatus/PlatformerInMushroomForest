@@ -25,7 +25,7 @@ public class CheckCircleOvetlap : MonoBehaviour
             var isInTags = _tags.Any(tag => overLapResult.CompareTag(tag));
             if (isInTags)
             {
-                _onOverLap?.Invoke(_interactionResults[i].gameObject);
+                _onOverLap?.Invoke(_interactionResults[i].gameObject);  
             }
             
         }

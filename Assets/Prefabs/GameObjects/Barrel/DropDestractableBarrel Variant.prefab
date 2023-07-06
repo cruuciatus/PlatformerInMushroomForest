@@ -72,6 +72,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6189891640034798374, guid: 26e4634cbfc59884399f9711fcef70f7, type: 3}
+      propertyPath: _hp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189891640034798374, guid: 26e4634cbfc59884399f9711fcef70f7, type: 3}
+      propertyPath: _maxHP
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189891640034798374, guid: 26e4634cbfc59884399f9711fcef70f7, type: 3}
       propertyPath: _health
       value: 1
       objectReference: {fileID: 0}
@@ -89,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6189891640034798379, guid: 26e4634cbfc59884399f9711fcef70f7, type: 3}
       propertyPath: m_Name
-      value: DropDestractableBarrel
+      value: DropDestractableBarrel Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26e4634cbfc59884399f9711fcef70f7, type: 3}

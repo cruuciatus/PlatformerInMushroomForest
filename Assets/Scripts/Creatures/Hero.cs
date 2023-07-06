@@ -47,7 +47,7 @@ public class Hero : Creature
 
 
     private Collider2D[] _interactionResults = new Collider2D[1];
-    private HealthComponent _health;
+    //private HealthComponent _health;
     private bool _allowDoubleJump;
     private float _defaultGravityScale;
     private GameSession _session;
@@ -64,7 +64,7 @@ public class Hero : Creature
     private void Start()
     {
         _session = FindObjectOfType<GameSession>();
-        _health = GetComponent<HealthComponent>();
+      
 
         //  _session.Data.Inventory.OnChanged += OnInventoryChanged;
         _session.StatsModel.OnUpgraded += OnHeroUpgraded;
@@ -213,7 +213,7 @@ public class Hero : Creature
     {
 
         base.TakeDamage(damage);
-        _health.TakeDmg(damage);
+        //_health.TakeDmg(damage);
         Sounds.Play("Hurt");
         if (CoinsCount > 0)
         {
