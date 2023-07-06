@@ -12,16 +12,23 @@ using UnityEngine;
     public void SetDelta(int delta)
         {
             _hpDelta = delta;
-        }
+    }
 
-        public void Apply(GameObject target)
+    public void Apply(GameObject target)
+    {
+        //  var healthComponent = target.GetComponent<HealthComponent>();
+        //  if (healthComponent != null)
+        // {
+        // healthComponent.TakeDmg(_hpDelta);
+
+        // }
+
+        var humanoid = target.GetComponent<Creature>();
+        if (humanoid != null)
         {
-            var healthComponent = target.GetComponent<HealthComponent>();
-            if (healthComponent != null)
-            {
-                healthComponent.TakeDmg(_hpDelta);
-            }
+            humanoid.TakeDamage(_hpDelta);
         }
+    }
 
-  
+
 }

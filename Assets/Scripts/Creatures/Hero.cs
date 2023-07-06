@@ -209,14 +209,17 @@ public class Hero : Creature
 
     }
 
-    public override void TakeDamage()
+    public override void TakeDamage(int damage)
     {
-        base.TakeDamage();
+
+        base.TakeDamage(damage);
+        _health.TakeDmg(damage);
         Sounds.Play("Hurt");
         if (CoinsCount > 0)
         {
             SpawnCoins();
         }
+       
     }
 
     public void OnDoThrow()

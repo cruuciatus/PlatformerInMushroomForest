@@ -136,14 +136,14 @@ public class Creature : MonoBehaviour
     //   return _groundCheck.IsTouchingLayer;
 
     // }
-    public virtual void TakeDamage()
+    public virtual void TakeDamage(int damage)
 
     {
 
         _isJumping = false;
         Animator.SetTrigger(Hit);
         Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, _damageVelocity);
-
+        print(1);
     }
     public virtual void Attack()
     {
