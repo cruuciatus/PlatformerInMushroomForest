@@ -7,7 +7,7 @@ public class Creature : MonoBehaviour
     [SerializeField] protected float _speed;
     [SerializeField] protected float _jumpSpeed;
     [SerializeField] private float _damageVelocity;
-   
+
 
     [Header("Checkers")]
     [SerializeField] protected LayerMask _groundLayer;
@@ -49,7 +49,7 @@ public class Creature : MonoBehaviour
         IsGrounded = _groundCheck.IsTouchingLayer;
     }
     private void FixedUpdate()
-    {   
+    {
         var xVelocity = CalculateXVelocity();
         var yVelocity = CalculateYVelocity();
 
@@ -131,11 +131,11 @@ public class Creature : MonoBehaviour
         }
 
     }
-  //  private bool IsGrounded()
-  //  {
-   //   return _groundCheck.IsTouchingLayer;
+    //  private bool IsGrounded()
+    //  {
+    //   return _groundCheck.IsTouchingLayer;
 
-  // }
+    // }
     public virtual void TakeDamage()
 
     {
@@ -154,7 +154,9 @@ public class Creature : MonoBehaviour
     public void OnAttackEnemy()
     {
         _attackRange.Check();
-       
+
 
     }
+
+    //asjdgjdfgdf
 }
