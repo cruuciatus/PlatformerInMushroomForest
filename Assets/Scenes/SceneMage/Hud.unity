@@ -2694,7 +2694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _container: {fileID: 1061313742}
   _animator: {fileID: 2078454789}
-  _textSpeed: 0.09
+  _textSpeed: 0.009
   _typing: {fileID: 0}
   _open: {fileID: 0}
   _close: {fileID: 0}
