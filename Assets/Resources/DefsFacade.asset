@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b338aae83744ac3429d734eff860fc7b, type: 3}
+  m_Name: DefsFacade
+  m_EditorClassIdentifier: 
+  _items: {fileID: 11400000, guid: aa1aee317613e6646973a9f0a6d08e9f, type: 2}
+  _player: {fileID: 11400000, guid: 211942c4a2a59374a8373214652095ba, type: 2}
+  _throwableItems: {fileID: 11400000, guid: 1a3d05f6bf92b5c4286c0c1d3f91d859, type: 2}
+  _potions: {fileID: 11400000, guid: 755c42a140455a84e9c1f2fe108e2074, type: 2}
+  _perks: {fileID: 11400000, guid: ff5c640e47159c64ab2b92d19bf8224d, type: 2}

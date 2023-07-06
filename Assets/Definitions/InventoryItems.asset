@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 943b87d495dd85048a80be9ba74a5b28, type: 3}
+  m_Name: InventoryItems
+  m_EditorClassIdentifier: 
+  _collection:
+  - _id: Coin
+    _icon: {fileID: -140608323, guid: 16d52584517890143aa24c9dc2115620, type: 3}
+    _tags: 0000000001000000
+  - _id: RangeAttack
+    _icon: {fileID: 21300000, guid: bb63dab4315ad564ca371128387f17a8, type: 3}
+    _tags: 010000000000000002000000
+  - _id: Key
+    _icon: {fileID: 21300000, guid: 5b99d646babfd794ba22c431e9730604, type: 3}
+    _tags: 01000000
+  - _id: Wind
+    _icon: {fileID: 21300000, guid: ebfc4b6fcb6ae1f4daf1ec5795919e43, type: 3}
+    _tags: 010000000000000002000000
+  - _id: SmallHealthPotion
+    _icon: {fileID: 460529809, guid: ee8340ddb497a5d4c8654c65b058d065, type: 3}
+    _tags: 0300000001000000
+  - _id: BigHealthPotion
+    _icon: {fileID: 1926962618, guid: ee8340ddb497a5d4c8654c65b058d065, type: 3}
+    _tags: 0300000001000000
+  - _id: SpeedUpPotion
+    _icon: {fileID: 460529809, guid: e7e2968a00bc8eb4388e058d17eb25ae, type: 3}
+    _tags: 030000000100000000000000
+  - _id: GreenDiamond
+    _icon: {fileID: 21300000, guid: bad7ae196b586aa48a1573022fc72a20, type: 3}
+    _tags: 0100000000000000

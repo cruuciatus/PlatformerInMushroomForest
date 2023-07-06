@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - Trash
+  - Interactable
+  - SfxAudioSource
+  - SimpleDialog
+  - PersonalizedDialog
+  - HudCanvas
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - layer1
+  - Water
+  - UI
+  - Level
+  - Ground
+  - Interactable
+  - Enemy
+  - Wall
+  - Trash
+  - Hero
+  - Enemies
+  - Collectables
+  - Chekers
+  - CollidableEnemies
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 245781891
+    locked: 0
+  - name: Level
+    uniqueID: 3419319049
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 795476063
+    locked: 0
+  - name: Creacures
+    uniqueID: 1969311043
+    locked: 0
