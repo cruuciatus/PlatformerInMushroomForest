@@ -9,8 +9,9 @@ public class HealthComponent : MonoBehaviour
 
     [SerializeField] public UnityEvent _onDie;
     [SerializeField] public HealthChangeEvent _onChange;
-    
+
     [SerializeField] private bool _immune;
+   
 
     public Action<int, int> OnHealthChange;
 
@@ -23,15 +24,18 @@ public class HealthComponent : MonoBehaviour
         set => _immune = value;
     }
 
+    
     public void Initialized(int HP, int MaxHP)
     {
         _hp = HP;
         _maxHP = MaxHP;
+
     }
+
 
     public void TakeDmg(int healthDelta)
     {       
-        if (healthDelta < 0 && Immune) return; 
+        if (healthDelta < 0 && Immune ) return; 
         if (_hp <= 0) return;
 
         _hp += healthDelta;

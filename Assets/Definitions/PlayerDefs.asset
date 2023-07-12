@@ -23,15 +23,15 @@ MonoBehaviour:
       _price:
         _itemId: 
         _count: 0
-    - _value: 10
+    - _value: 5
       _price:
         _itemId: Coin
         _count: 20
-    - _value: 20
+    - _value: 10
       _price:
         _itemId: Coin
         _count: 50
-    - _value: 40
+    - _value: 15
       _price:
         _itemId: Coin
         _count: 100

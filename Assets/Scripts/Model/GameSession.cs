@@ -69,10 +69,10 @@ public class GameSession : MonoBehaviour
         //_trash.Retain(QuickInventory);
 
         PerksModel = new PerksModel(_data);
-        _trash.Retain(PerksModel);
+       // _trash.Retain(PerksModel);
 
         StatsModel = new StatsModel(_data);
-        _trash.Retain(StatsModel);
+       // _trash.Retain(StatsModel);
 
         //_data.HP.Value = (int)StatsModel.GetValue(StatId.Hp);
         //_data.MaxHP.Value = (int)StatsModel.GetValue(StatId.MaxHP); 
@@ -119,7 +119,7 @@ public class GameSession : MonoBehaviour
         //_data.HP = tmp.HP;
         _data.MaxHP = tmp.MaxHP;
         _data.HP = _data.MaxHP;
-        _trash.Dispose();
+       // _trash.Dispose();
     }
 
     public bool IsChecked(string id)

@@ -228,7 +228,6 @@ GameObject:
   - component: {fileID: 6853408862402550610}
   - component: {fileID: 3603748327006972181}
   - component: {fileID: 8740646269681498407}
-  - component: {fileID: 867823646048438235}
   m_Layer: 0
   m_Name: TorchCheckPoint
   m_TagString: Untagged
@@ -266,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: level2-checkpoint2
-  _heroSpawner: {fileID: 867823646048438235}
+  _heroSpawner: {fileID: 0}
   _setChecked:
     m_PersistentCalls:
       m_Calls:
@@ -368,17 +367,3 @@ MonoBehaviour:
   _layer:
     serializedVersion: 2
     m_Bits: 4096
---- !u!114 &867823646048438235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7863775354358432847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0086ecbc9be53684a833d307f67e4e60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _target: {fileID: 6065955677766722663}
-  _prefab: {fileID: 1277134671221156991, guid: b2aca5ee8027cbe4da0049ef1b16bb6c, type: 3}

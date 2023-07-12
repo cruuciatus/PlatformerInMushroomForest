@@ -95,7 +95,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3756122225241807474
 RectTransform:
   m_ObjectHideFlags: 0
@@ -114,7 +114,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.171, y: 0.107}
+  m_AnchoredPosition: {x: 0.254, y: 0.138}
   m_SizeDelta: {x: 33, y: 7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6406002316476827136
@@ -410,9 +410,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03447026, y: 0}
+  m_Offset: {x: -0.0004749547, y: 0}
   serializedVersion: 2
-  m_Radius: 0.121169984
+  m_Radius: 0.060439587
 --- !u!1 &8888513767829277328
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,6 +429,9 @@ GameObject:
   - component: {fileID: 1081676530044315405}
   - component: {fileID: 8223541319419736391}
   - component: {fileID: 767157094}
+  - component: {fileID: 787484999871375082}
+  - component: {fileID: 787484999871375072}
+  - component: {fileID: 787484999871375081}
   m_Layer: 13
   m_Name: FireBot
   m_TagString: Enemy
@@ -495,7 +498,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -875648247
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1521325312, guid: 099c4739b934da84ba5ffad86875dc74, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -545,7 +548,7 @@ MonoBehaviour:
     _value: 2
   _meleeCanAttack: {fileID: 8888513767614248211}
   _rangeCooldown:
-    _value: 2
+    _value: 1.4
   _rangeAttack: {fileID: 8888513768508515133}
 --- !u!114 &4577139361668970874
 MonoBehaviour:
@@ -559,22 +562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b77cee75a891fc418084043811ba770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 5
-  _onDamage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3529437159966091150}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: hit
-          m_BoolArgument: 0
-        m_CallState: 2
+  _hp: 5
+  _maxHP: 5
   _onDie:
     m_PersistentCalls:
       m_Calls:
@@ -602,9 +591,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _onHeal:
-    m_PersistentCalls:
-      m_Calls: []
   _onChange:
     m_PersistentCalls:
       m_Calls: []
@@ -622,7 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 8888513767829277328}
-  _state: {fileID: 0}
+  _state: {fileID: 787484999871375072}
 --- !u!114 &8223541319419736391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,6 +639,62 @@ CapsuleCollider2D:
   m_Offset: {x: 0.27318355, y: -0.08973297}
   m_Size: {x: 0.12909149, y: 0.16601141}
   m_Direction: 0
+--- !u!50 &787484999871375082
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8888513767829277328}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
+--- !u!114 &787484999871375072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8888513767829277328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a61d0334a53192d4cad01df365bef7b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: FireBot
+--- !u!114 &787484999871375081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8888513767829277328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f884b9b1fa29c46a9734cdab968bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _invertScale: 0
+  _speed: 0
+  _jumpSpeed: 0
+  _damageVelocity: 0
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _groundCheck: {fileID: 0}
+  _attackRange: {fileID: 0}
+  _particles: {fileID: 0}
 --- !u!1 &8888513768508515139
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,8 +720,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8888513768508515139}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.255, y: 0.059, z: 0}
-  m_LocalScale: {x: 1.0822511, y: 0.97594297, z: 2}
+  m_LocalPosition: {x: 0.261, y: 0.06, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8888513767829277325}
@@ -698,7 +740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 8888513768508515138}
-  _prefab: {fileID: 4499111912073004687, guid: 14682b8e844bfc142a86d5ec728001e9, type: 3}
+  _prefab: {fileID: 4499111912073004687, guid: 56c3338374cca0743a64e2e8a6b0d7fc, type: 3}
 --- !u!1 &8888513768889597391
 GameObject:
   m_ObjectHideFlags: 0

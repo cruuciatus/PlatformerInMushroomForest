@@ -20,7 +20,7 @@ public class SpawnComponent : MonoBehaviour
     public virtual GameObject SpawnInstance()
     {
         var instantiate = Instantiate(_prefab, _target.position, Quaternion.identity);
-      instantiate.transform.localScale = _target.lossyScale;
+        instantiate.transform.localScale = _target.lossyScale;
         instantiate.SetActive(true);
 
         return instantiate;
