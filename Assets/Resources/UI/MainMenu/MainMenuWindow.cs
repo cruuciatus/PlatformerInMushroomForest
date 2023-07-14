@@ -6,18 +6,30 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuWindow : AnimatedWindow
 {
+   
     private Action _closeAction;
     public void OnShowSetting()
     {
         WindowUtils.CreateWindow("UI/SettingsWindow");
     }
+
+
     public void OnStartGame()
     {
+        StateLoadGame.IsBegin = true;
         _closeAction = () => { SceneManager.LoadScene("Level1-Mage"); };
         Close();
 
     }
 
+
+
+    public void OnLastSave()
+    {
+        StateLoadGame.IsBegin = false;
+        _closeAction = () => { SceneManager.LoadScene("Level1-Mage"); };
+        Close();
+    }
     public void OnLanguages()
     {
         WindowUtils.CreateWindow("UI/LocalizationWindow");

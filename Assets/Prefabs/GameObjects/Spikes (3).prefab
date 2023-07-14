@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8285285008456713345}
   - component: {fileID: 1995942736558159736}
   - component: {fileID: 2861841356409933686}
-  - component: {fileID: 2970892956086377644}
   - component: {fileID: 1078333183232013355}
+  - component: {fileID: 2075215611}
   m_Layer: 7
   m_Name: Spikes (3)
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7274471944628560532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.6, y: -3.14, z: 0}
-  m_LocalScale: {x: 0.9706125, y: 0.9503542, z: 0.52482563}
+  m_LocalScale: {x: 0.79172814, y: 0.77520347, z: 0.4281}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03972915, y: -0.24852727}
+  m_Offset: {x: 0.0054979622, y: -0.30890146}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -111,9 +111,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9755283, y: 0.3544335}
+  m_Size: {x: 0.92490965, y: 0.39862937}
   m_EdgeRadius: 0
---- !u!114 &2970892956086377644
+--- !u!114 &1078333183232013355
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,7 +122,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 7274471944628560532}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8519f551ed1160446961e358ac08ea5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a4d03aa5a5974b4aa69e7b790078cc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hpDelta: -1
+--- !u!114 &2075215611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274471944628560532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b07b9a844536fd44b7d725390f1e685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _tag: Player
@@ -141,28 +154,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1938578954, guid: b2aca5ee8027cbe4da0049ef1b16bb6c, type: 3}
-        m_TargetAssemblyTypeName: PlaySoundsComponent, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Hurt
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1078333183232013355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7274471944628560532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a4d03aa5a5974b4aa69e7b790078cc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hpDelta: -1
+  delayDamage: 3

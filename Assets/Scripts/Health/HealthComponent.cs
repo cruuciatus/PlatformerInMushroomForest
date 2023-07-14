@@ -11,7 +11,8 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] public HealthChangeEvent _onChange;
 
     [SerializeField] private bool _immune;
-   
+    private Hero hero;
+
 
     public Action<int, int> OnHealthChange;
 
@@ -23,8 +24,11 @@ public class HealthComponent : MonoBehaviour
         get => _immune; 
         set => _immune = value;
     }
+    public void Start()
+    {
+        hero = GetComponent<Hero>();
+    }
 
-    
     public void Initialized(int HP, int MaxHP)
     {
         _hp = HP;
@@ -61,12 +65,25 @@ public class HealthComponent : MonoBehaviour
     {
         int tmp = _hp + healthDelta;
 
-        if(tmp >= MaxHP)
+        if (tmp >= MaxHP)
             _hp = MaxHP;
         else
             _hp = tmp;
         _onChange?.Invoke(_hp);
         OnHealthChange?.Invoke(HP, MaxHP);
+    }
+
+    public void OnImmune()
+    {
+        _immune = true;
+        hero.ShowImmune();
+        Invoke("OffImmune", 1f);
+    }
+
+    private void OffImmune()
+    {
+        hero.HideImmune();
+        _immune = false;
     }
 
 #if UNITY_EDITOR

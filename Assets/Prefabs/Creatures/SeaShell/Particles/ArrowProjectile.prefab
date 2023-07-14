@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7a60ffd244a494f883306861286229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 7
+  _speed: 6
   _invertX: 0
 --- !u!114 &8034451440511878636
 MonoBehaviour:
@@ -231,15 +231,37 @@ MonoBehaviour:
   _clips:
   - _name: 
     _sprites:
-    - {fileID: 21300000, guid: 2a1ecb8b802f98242aafbc872ac836b9, type: 3}
-    - {fileID: 21300000, guid: 1943f40c82f7fb946968c010c7c32d4b, type: 3}
-    - {fileID: 21300000, guid: 130fb43af5be6864ea72804f14a91702, type: 3}
-    - {fileID: 21300000, guid: 4d7d1c185f0710c45aaf0bd531f0e0b0, type: 3}
-    - {fileID: 21300000, guid: 2b0ea583623eb9446a4ba68ed45e943b, type: 3}
-    - {fileID: 21300000, guid: dd299829204ce484b85030b9aaeb897e, type: 3}
-    - {fileID: 21300000, guid: 654a7e1169ffe504ba113fd1e53d15ff, type: 3}
-    _loop: 1
+    - {fileID: 21300000, guid: 735b7dde1c8f56a4d85e4373032d6399, type: 3}
+    - {fileID: 21300000, guid: 1df43c6e8984ec94ca47e620fdecc899, type: 3}
+    - {fileID: 21300000, guid: c63629ae138306b4abd46c705b3c0d59, type: 3}
+    - {fileID: 21300000, guid: 6b354d1f6ca6e544e8a72887bc000769, type: 3}
+    - {fileID: 21300000, guid: f1b6811d16ff82747897ebc7fb7d4b53, type: 3}
+    - {fileID: 21300000, guid: 069788cdd39532e468c95f09b2cf4bd0, type: 3}
+    - {fileID: 21300000, guid: 9e7744bc17794d54e8acd12e062b906e, type: 3}
+    - {fileID: 21300000, guid: 4b6bac97f0eff3740be45ab998e2b81b, type: 3}
+    - {fileID: 21300000, guid: 6900cd31d6fbcce4194296348318ed30, type: 3}
+    - {fileID: 21300000, guid: 373741a27eac69a4197aefb3bc19563f, type: 3}
+    - {fileID: 21300000, guid: 8786b67ffb125a249aa3b017a7d4751d, type: 3}
+    - {fileID: 21300000, guid: 683979fb10203c047bf18e198dc19490, type: 3}
+    - {fileID: 21300000, guid: 0756388d7e897364fbd82e219af10ffb, type: 3}
+    - {fileID: 21300000, guid: f5da8ab465dc9ee439d021cd0ddcbb15, type: 3}
+    - {fileID: 21300000, guid: 67d2c08de9462fe40be8fb036d6615b7, type: 3}
+    - {fileID: 21300000, guid: 7c657a2b49acf5e40bdd1054dedacba1, type: 3}
+    - {fileID: 21300000, guid: e89fca348dc5b7d40bcca9e5f15ec9aa, type: 3}
+    _loop: 0
     _allowNextClip: 0
     _onComplete:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 4196164750397419200}
+          m_TargetAssemblyTypeName: DestroyObjectComponent, Assembly-CSharp
+          m_MethodName: DestroyObject
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

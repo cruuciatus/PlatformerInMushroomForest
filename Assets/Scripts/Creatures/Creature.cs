@@ -25,12 +25,13 @@ public class Creature : MonoBehaviour
     protected HealthComponent _health;
 
     private static readonly int IsGroundKey = Animator.StringToHash("is-ground");
-    private static readonly int IsRunning = Animator.StringToHash("is-running");
+    protected static readonly int IsRunning = Animator.StringToHash("is-running");
     private static readonly int VerticalVelocity = Animator.StringToHash("vertical-velocity");
-    private static readonly int Hit = Animator.StringToHash("hit");
+    protected static readonly int Hit = Animator.StringToHash("hit");
     protected static readonly int AttackKey = Animator.StringToHash("attack");
     protected static readonly int ThrowKey = Animator.StringToHash("throw");
     protected static readonly int DashKey = Animator.StringToHash("dash");
+    protected static readonly int HurtKey = Animator.StringToHash("hurt");
     protected virtual void Awake()
     {
         Rigidbody = GetComponent<Rigidbody2D>();

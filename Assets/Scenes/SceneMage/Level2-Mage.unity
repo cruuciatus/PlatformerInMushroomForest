@@ -423,6 +423,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5376941531694668133, guid: 220eb425c771b4f4895f2f43fb6300de, type: 3}
   m_PrefabInstance: {fileID: 1647560004}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &203503140
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3364080266550431873, guid: 3e843e63a3212c04486d46b819ad3f49, type: 3}
+      propertyPath: m_Name
+      value: Obelisk (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364080266550431874, guid: 3e843e63a3212c04486d46b819ad3f49, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364080266550431874, guid: 3e843e63a3212c04486d46b819ad3f49, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.069
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364080266550431874, guid: 3e843e63a3212c04486d46b819ad3f49, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.469
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364080266550431874, guid: 3e843e63a3212c04486d46b819ad3f49, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364080266550431874, guid: 3e843e63a3212c04486d46b819ad3f49, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364080266550431874, guid: 3e843e63a3212c04486d46b819ad3f49, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364080266550431874, guid: 3e843e63a3212c04486d46b819ad3f49, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364080266550431874, guid: 3e843e63a3212c04486d46b819ad3f49, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364080266550431874, guid: 3e843e63a3212c04486d46b819ad3f49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364080266550431874, guid: 3e843e63a3212c04486d46b819ad3f49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364080266550431874, guid: 3e843e63a3212c04486d46b819ad3f49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364080266550431885, guid: 3e843e63a3212c04486d46b819ad3f49, type: 3}
+      propertyPath: _bound._sentences.Array.data[0]._valued
+      value: You can break the barrel with X
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3e843e63a3212c04486d46b819ad3f49, type: 3}
 --- !u!1001 &215464293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9608,7 +9669,7 @@ MonoBehaviour:
       _unlocked: []
     Levels:
       _progress: []
-  _defaultCheckPoint: level2-checkpoint1
+  _defaultCheckPoint: checkpoint1
 --- !u!4 &628042594
 Transform:
   m_ObjectHideFlags: 0
@@ -20596,7 +20657,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1795433, y: 1}
+    m_SensorSize: {x: 2.0184984, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -21403,7 +21464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1036be203a61b4fb17121a618a9691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: level2-checkpoint1
+  _id: checkpoint1
   _heroSpawner: {fileID: 8608537304411108466}
   _setChecked:
     m_PersistentCalls:

@@ -18,6 +18,7 @@ public class CheckPointComponent : MonoBehaviour
     {
         _session = FindObjectOfType<GameSession>();
         if (_session.IsChecked(_id))
+    //  if(StateLoadGame.CurrentCheckPoint == "")
             _setChecked?.Invoke();
         else
             _setUnchecked?.Invoke();

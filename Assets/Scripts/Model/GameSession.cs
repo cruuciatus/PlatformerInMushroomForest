@@ -27,40 +27,84 @@ public class GameSession : MonoBehaviour
         var existsSession = GetExistsSession();
         if (existsSession != null)
         {
-            existsSession.StartSession(_defaultCheckPoint);
+            LoadLastSaveHero();
+            existsSession.StartSession();
 
             QuickInventory?.Subscribe();
             Destroy(gameObject);
         }
         else
         {
+            LoadBeginHero();
             Save();
             InitModels();
             DontDestroyOnLoad(this);
-            StartSession(_defaultCheckPoint);
+            StartSession();
+            
+        }
+
+
+    }
+
+    public void StartSession()
+    {
+        //SetChecked(defaultCheckPoint);
+        LoadHud();
+        LoadUIs();
+
+
+        SpawnHero(StateLoadGame.CurrentCheckPoint);
+
+
+    }
+
+    public void LoadBeginHero()
+    {
+        if (StateLoadGame.IsBegin)
+        {
+            StateLoadGame.CurrentCheckPoint = _defaultCheckPoint;
+        }
+
+
+
+        if (StateLoadGame.CurrentCheckPoint == "")
+        {
+
+            StateLoadGame.CurrentCheckPoint = _defaultCheckPoint;
+        }
+
+
+    }
+
+    public void LoadLastSaveHero()
+    {
+
+        if (StateLoadGame.CurrentCheckPoint == "")
+        {
+
+            StateLoadGame.CurrentCheckPoint = _defaultCheckPoint;
         }
     }
 
-    private void StartSession(string defaultCheckPoint)
-    {
-        SetChecked(defaultCheckPoint);
-        LoadHud();
-        LoadUIs();
-        SpawnHero();
-    }
-
-    private void SpawnHero()
+    private void SpawnHero(string lastCheckPoint)
     {
         var checkpoints = FindObjectsOfType<CheckPointComponent>();
-        var lastCheckPoint = _checkpoints.Last();
-        foreach (var checkPoint in checkpoints)
+        //var lastCheckPoint = _checkpoints.Last();
+        
+            foreach (var checkPoint in checkpoints)
         {
             if (checkPoint.Id == lastCheckPoint)
             {
+               
                 checkPoint.SpawnHero();
                 break;
             }
         }
+    }
+
+   private void LoadGame()
+    {
+      //  if(StateLoadGame.IsBegin )
     }
     private void InitModels()
     {
@@ -124,16 +168,23 @@ public class GameSession : MonoBehaviour
 
     public bool IsChecked(string id)
     {
-        return _checkpoints.Contains(id);
+
+        return StateLoadGame.CurrentCheckPoint == id;// _checkpoints.Contains(id);
     }
 
     public void SetChecked(string id)
     {
-        if (!_checkpoints.Contains(id))
-        {
+        // if (!_checkpoints.Contains(id))
+        //{
+        StateLoadGame.CurrentCheckPoint = id;
             Save();
-            _checkpoints.Add(id);
-        }
+           // _checkpoints.Add(id);
+       // }
+
+    }
+
+    private void OnBeginGame()
+    {
 
     }
 

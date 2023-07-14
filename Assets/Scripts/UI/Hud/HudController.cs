@@ -77,6 +77,11 @@ public class HudController : MonoBehaviour
         WindowUtils.CreateWindow("UI/PlayerStatsWindow");
     }
 
+    public void ShowPerks()
+    {
+        WindowUtils.CreateWindow("UI/ManagePerksWindow");
+    }
+
 
     /////////////////// OBSOLETE  //////////////////////////////////
 

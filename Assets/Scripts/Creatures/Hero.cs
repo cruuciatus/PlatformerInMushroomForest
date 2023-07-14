@@ -21,6 +21,7 @@ public class Hero : Creature
     [SerializeField] private float _dashDelta;
     [SerializeField] private SpawnComponent _throwSpawner;
     [SerializeField] private ShieldComponent _shield;
+    [SerializeField] private GameObject hurt;
 
     [Header("Particles")]
     [SerializeField] private ParticleSystem _hitParticles;
@@ -64,7 +65,7 @@ public class Hero : Creature
     private void Start()
     {
         _session = FindObjectOfType<GameSession>();
-      
+
 
         //  _session.Data.Inventory.OnChanged += OnInventoryChanged;
         _session.StatsModel.OnUpgraded += OnHeroUpgraded;
@@ -74,7 +75,7 @@ public class Hero : Creature
         _health.Initialized(_session.Data.HP.Value, _session.Data.MaxHP.Value);
         //  UpdateHeroWeapon();
 
-      
+
     }
 
     private void OnHeroUpgraded(StatId statId)
@@ -115,7 +116,7 @@ public class Hero : Creature
 
     protected override float CalculateXVelocity()
     {
-        return base.CalculateXVelocity() + Rigidbody.velocity.x/10;
+        return base.CalculateXVelocity() + Rigidbody.velocity.x / 10;
     }
 
     protected override float CalculateYVelocity()
@@ -203,7 +204,7 @@ public class Hero : Creature
 
     public override void Attack()
     {
-        
+
         // if (SwordCount <= 0) return;
         base.Attack();
 
@@ -214,12 +215,13 @@ public class Hero : Creature
 
         base.TakeDamage(damage);
         //_health.TakeDmg(damage);
+        _health.OnImmune();
         Sounds.Play("Hurt");
         if (CoinsCount > 0)
         {
             SpawnCoins();
         }
-       
+
     }
 
     public void OnDoThrow()
@@ -310,7 +312,8 @@ public class Hero : Creature
                 Invoke(nameof(OnDoThrow), 0.1f);
                 //Invoke(nameof(OnDoThrow), 0.3f);
                 // Invoke(nameof(OnDoThrow), 0.6f);
-            } else
+            }
+            else
             {
 
                 PerformThrowling();
@@ -325,7 +328,7 @@ public class Hero : Creature
         isStartThrow = false;
         delayThrow = 0;
     }
-    
+
     private void UsePotion()
     {
         var potion = DefsFacade.I.Potions.Get(SelectedItemId);
@@ -368,7 +371,7 @@ public class Hero : Creature
 
     [SerializeField] private int DashImpulse;
     public bool faceRight = true;
-   //[SerializeField] private TrailRenderer tr;
+    //[SerializeField] private TrailRenderer tr;
     public void Dash()
     {
         if (_session.PerksModel.IsDashSupported)
@@ -378,12 +381,12 @@ public class Hero : Creature
             Rigidbody.velocity = new Vector2(0, 0);
             if (Rigidbody.transform.localScale.x < 0)
             {
-               Rigidbody.AddForce(Vector2.left * DashImpulse, ForceMode2D.Impulse);
+                Rigidbody.AddForce(Vector2.left * DashImpulse, ForceMode2D.Impulse);
             }
             else
             {
                 Rigidbody.AddForce(Vector2.right * DashImpulse, ForceMode2D.Impulse);
-            }  
+            }
         }
     }
 
@@ -420,6 +423,17 @@ public class Hero : Creature
         }
     }
 
+    public void ShowImmune()
+    {
+        Animator.SetTrigger(Hit);
+        hurt.SetActive(true);
+        Sounds.Play("Hurt");
+    }
+
+    public void HideImmune()
+    {
+        hurt.SetActive(false);
+    }
 
 
     //  private void UpdateHeroWeapon()

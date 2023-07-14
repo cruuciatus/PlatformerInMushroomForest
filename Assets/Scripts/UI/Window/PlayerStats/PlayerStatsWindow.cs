@@ -28,7 +28,7 @@ public class PlayerStatsWindow : AnimatedWindow
         
         _trash.Retain(_session.StatsModel.Subscribe(OnStatsChanged));
         _trash.Retain(_upgradeButton.onClick.Subscribe(OnUpgrade));
-
+        CheckBuyButton();
         OnStatsChanged();
     }
 
@@ -47,12 +47,32 @@ public class PlayerStatsWindow : AnimatedWindow
         var nextLevel = _session.StatsModel.GetCurrentLevel(selected) + 1;
         var def = _session.StatsModel.GetLevelDef(selected, nextLevel);
         _price.SetData(def.Price);
+        CheckBuyButton();
+        //_session.PerksModel.CanBuy(selected);
 
         _price.gameObject.SetActive(def.Price.Count != 0);
         _upgradeButton.gameObject.SetActive(def.Price.Count != 0);
 
-       
+
+
     }
+
+    public void CheckBuyButton()
+    {
+        // _session.StatsModel.
+        var selected = _session.StatsModel.InterfaceSelectedStat.Value;
+        if (_session.StatsModel.Test(selected))
+        {
+            _upgradeButton.interactable = true;
+        }else
+        {
+            _upgradeButton.interactable = false;
+        }
+         
+
+    }
+
+
 
     private void OnDestroy()
     {
