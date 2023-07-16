@@ -6,14 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuWindow : AnimatedWindow
 {
-   
+    private LoadSaveMenu loadSaveMenu;
     private Action _closeAction;
     public void OnShowSetting()
     {
         WindowUtils.CreateWindow("UI/SettingsWindow");
     }
 
-
+    protected override void Start()
+    {
+        base.Start();
+        loadSaveMenu = GetComponent<LoadSaveMenu>();
+    }
+    
     public void OnStartGame()
     {
         StateLoadGame.IsBegin = true;
@@ -26,9 +31,12 @@ public class MainMenuWindow : AnimatedWindow
 
     public void OnLastSave()
     {
+        loadSaveMenu.LoadLastSave();
         StateLoadGame.IsBegin = false;
-        _closeAction = () => { SceneManager.LoadScene("Level1-Mage"); };
+        _closeAction = () => { SceneManager.LoadScene(StateLoadGame.sceneName); };
+        
         Close();
+
     }
     public void OnLanguages()
     {

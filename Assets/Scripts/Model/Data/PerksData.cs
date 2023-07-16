@@ -9,6 +9,12 @@ public class PerksData
     [SerializeField] private StringProperty _used = new StringProperty();
     [SerializeField] private List<string> _unlocked;
     public StringProperty Used => _used;
+    public List<string> Unlocked => _unlocked;
+
+    public void SetUnlocked(List<string> unlocked)
+    {
+        _unlocked = unlocked;
+    }
 
     public void AddPerk(string id)
     {

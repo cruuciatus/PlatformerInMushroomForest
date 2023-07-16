@@ -1,18 +1,21 @@
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameSession : MonoBehaviour
 {
-
     [SerializeField] private PlayerData _data;
     [SerializeField] private string _defaultCheckPoint;
 
     private readonly CompositeDisposable _trash = new CompositeDisposable();
     public PlayerData Data => _data;
-    private PlayerData _save;
+    private PlayerDataForSave DataForSave;
+
+    private bool isStartGame;
+    private bool nextLevel;
 
 
     public QuickInventoryModel QuickInventory { get; private set; }
@@ -20,92 +23,80 @@ public class GameSession : MonoBehaviour
     public PerksModel PerksModel { get; private set; }
     public StatsModel StatsModel { get; private set; }
 
-    private readonly List<string> _checkpoints = new List<string>();
 
     private void Start()
     {
         var existsSession = GetExistsSession();
         if (existsSession != null)
         {
-            LoadLastSaveHero();
+            if (StateLoadGame.IsBegin == false)
+                existsSession.LoadLastSave();
             existsSession.StartSession();
+
+            StateLoadGame.IsBegin = false;
 
             QuickInventory?.Subscribe();
             Destroy(gameObject);
+            existsSession.Invoke(nameof(StartOff), 2f);
         }
         else
         {
-            LoadBeginHero();
-            Save();
             InitModels();
             DontDestroyOnLoad(this);
+
+            if (StateLoadGame.IsBegin == false)
+                LoadLastSave();
             StartSession();
-            
+
+            StateLoadGame.IsBegin = false;
+            Invoke(nameof(StartOff), 2f);
         }
+    }
 
+    public void StartOff()
+    {
+        isStartGame = false;
+        nextLevel = false;
+    }
 
+    public void NextLevel()
+    {
+        nextLevel = true;
     }
 
     public void StartSession()
     {
-        //SetChecked(defaultCheckPoint);
-        LoadHud();
+        CheckIsBeginGame();
         LoadUIs();
-
-
-        SpawnHero(StateLoadGame.CurrentCheckPoint);
-
-
+        SpawnHero(_data.CurrentCheckPoint);
     }
 
-    public void LoadBeginHero()
+    public void CheckIsBeginGame()
     {
-        if (StateLoadGame.IsBegin)
+        if (StateLoadGame.IsBegin || _data.CurrentCheckPoint == "" || nextLevel)
         {
-            StateLoadGame.CurrentCheckPoint = _defaultCheckPoint;
-        }
-
-
-
-        if (StateLoadGame.CurrentCheckPoint == "")
-        {
-
-            StateLoadGame.CurrentCheckPoint = _defaultCheckPoint;
-        }
-
-
-    }
-
-    public void LoadLastSaveHero()
-    {
-
-        if (StateLoadGame.CurrentCheckPoint == "")
-        {
-
-            StateLoadGame.CurrentCheckPoint = _defaultCheckPoint;
+            _data.CurrentCheckPoint = _defaultCheckPoint;
         }
     }
+
+
 
     private void SpawnHero(string lastCheckPoint)
     {
         var checkpoints = FindObjectsOfType<CheckPointComponent>();
-        //var lastCheckPoint = _checkpoints.Last();
         
-            foreach (var checkPoint in checkpoints)
+        foreach (var checkPoint in checkpoints)
         {
             if (checkPoint.Id == lastCheckPoint)
-            {
-               
+            {               
                 checkPoint.SpawnHero();
+                Save();
+                isStartGame = true;
                 break;
             }
         }
     }
 
-   private void LoadGame()
-    {
-      //  if(StateLoadGame.IsBegin )
-    }
     private void InitModels()
     {
         QuickInventory = new QuickInventoryModel(_data);
@@ -135,10 +126,6 @@ public class GameSession : MonoBehaviour
         SceneManager.LoadScene("Controls", LoadSceneMode.Additive);
     }
 
-    private void LoadHud()
-    {
-        SceneManager.LoadScene("Hud", LoadSceneMode.Additive);
-    }
     private GameSession GetExistsSession()
     {
         var sessions = FindObjectsOfType<GameSession>();
@@ -152,40 +139,75 @@ public class GameSession : MonoBehaviour
         return null;
     }
 
+    private void CollectDataForSave()
+    {
+        DataForSave = new PlayerDataForSave();
+        DataForSave._inventoryData = _data.Inventory.GetAll();
+        DataForSave.HP = _data.HP;
+        DataForSave.CurrentCheckPoint = _data.CurrentCheckPoint;
+        
+        DataForSave._used = _data.Perks.Used.Value;
+        DataForSave._unlocked = _data.Perks.Unlocked;
+
+        DataForSave.Levels = _data.Levels;
+
+        StateLoadGame.sceneName = SceneManager.GetActiveScene().name;
+       DataForSave.SceneName = SceneManager.GetActiveScene().name;
+    }
+
+    public void LoadData()
+    {
+        _data.Inventory.SetData(DataForSave._inventoryData);
+        _data.HP = DataForSave.HP;
+        _data.CurrentCheckPoint = DataForSave.CurrentCheckPoint;
+
+        _data.Perks.Used.Value = DataForSave._used;
+        _data.Perks.SetUnlocked(DataForSave._unlocked);
+        _data.Levels = DataForSave.Levels;
+
+        QuickInventory = new QuickInventoryModel(_data);
+        QuickInventory.Subscribe();
+
+        StateLoadGame.sceneName = DataForSave.SceneName;
+    }
+
     public void Save()
     {
-        _save = _data.Clone();
+        CollectDataForSave();
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream fileStream = File.Create(Application.persistentDataPath + "/PlayerSaveDataTest.dat");
+        bf.Serialize(fileStream, DataForSave);
+        fileStream.Close();
     }
+
     public void LoadLastSave()
     {
-        PlayerData tmp = _save.Clone();
-        //  _data = _save.Clone();
-        //_data.HP = tmp.HP;
-        _data.MaxHP = tmp.MaxHP;
-        _data.HP = _data.MaxHP;
-       // _trash.Dispose();
+        if (File.Exists(Application.persistentDataPath + "/PlayerSaveDataTest.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fileStream = File.Open(Application.persistentDataPath + "/PlayerSaveDataTest.dat", FileMode.Open);
+            DataForSave = (PlayerDataForSave)bf.Deserialize(fileStream);
+            fileStream.Close();
+
+            LoadData();
+            //print("данные игрока загружены");
+        }
+        else
+        {
+            print("Данные игрока для загрузки не найдены");
+        }
     }
 
     public bool IsChecked(string id)
     {
-
-        return StateLoadGame.CurrentCheckPoint == id;// _checkpoints.Contains(id);
+        return _data.CurrentCheckPoint == id;// _checkpoints.Contains(id);
     }
 
     public void SetChecked(string id)
     {
-        // if (!_checkpoints.Contains(id))
-        //{
-        StateLoadGame.CurrentCheckPoint = id;
-            Save();
-           // _checkpoints.Add(id);
-       // }
-
-    }
-
-    private void OnBeginGame()
-    {
-
+        if (isStartGame) return;
+        _data.CurrentCheckPoint = id;
+        Save();
     }
 
     private readonly List<string> _removedItems = new List<string>();

@@ -34,6 +34,19 @@ public class InventoryData
         }
         OnChanged?.Invoke(id, Count(id));
     }
+
+    public List<InventoryItemData> GetAll()
+    {
+        var retValue = new List<InventoryItemData>();
+        retValue = _inventory;
+        return retValue;
+    }
+
+    public void SetData(List<InventoryItemData> inventoryItemDatas)
+    {
+        _inventory = inventoryItemDatas;
+    }
+
     public InventoryItemData[] GetAll(params ItemTag[] tags)
     {
         var retValue = new List<InventoryItemData>();

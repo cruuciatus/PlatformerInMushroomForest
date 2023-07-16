@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 488043420, guid: 26e4634cbfc59884399f9711fcef70f7, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 488043420, guid: 26e4634cbfc59884399f9711fcef70f7, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -98,6 +102,14 @@ PrefabInstance:
     - target: {fileID: 6189891640034798379, guid: 26e4634cbfc59884399f9711fcef70f7, type: 3}
       propertyPath: m_Name
       value: DropDestractableBarrel Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6189891640034798379, guid: 26e4634cbfc59884399f9711fcef70f7, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8478634589256298749, guid: 26e4634cbfc59884399f9711fcef70f7, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26e4634cbfc59884399f9711fcef70f7, type: 3}

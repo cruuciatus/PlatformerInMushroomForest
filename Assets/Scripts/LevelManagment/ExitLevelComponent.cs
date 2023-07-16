@@ -11,6 +11,7 @@ public class ExitLevelComponent : MonoBehaviour
     {
         var session = FindObjectOfType<GameSession>();
         session.Save();
+        session.NextLevel();
         SceneManager.LoadScene(_sceneName);
     }
 }

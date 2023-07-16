@@ -601,7 +601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   _isTouchingLayer: 1
 --- !u!70 &1277134671562542593
 CapsuleCollider2D:
