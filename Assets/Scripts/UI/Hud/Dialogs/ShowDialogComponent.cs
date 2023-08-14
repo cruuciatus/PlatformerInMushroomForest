@@ -46,7 +46,7 @@ public class ShowDialogComponent : MonoBehaviour
         _external = def;
         Show();
     }
-
+   
     public DialogData Data
     {
         get

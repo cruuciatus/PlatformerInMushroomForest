@@ -78,12 +78,12 @@ SpriteRenderer:
   m_SortingLayerID: -875648247
   m_SortingLayer: 2
   m_SortingOrder: 5
-  m_Sprite: {fileID: 1762729593, guid: f83116c1939556142ac328c29ebd193a, type: 3}
+  m_Sprite: {fileID: 15614006, guid: 53d627ebdf324174c9c41c6067aee56a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.72, y: 0.32}
+  m_Size: {x: 2.0004885, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -108,19 +108,19 @@ MonoBehaviour:
   _clips:
   - _name: idle
     _sprites:
-    - {fileID: 1762729593, guid: f83116c1939556142ac328c29ebd193a, type: 3}
-    - {fileID: 1271097367, guid: f83116c1939556142ac328c29ebd193a, type: 3}
-    - {fileID: -868308805, guid: f83116c1939556142ac328c29ebd193a, type: 3}
-    - {fileID: 244102607, guid: f83116c1939556142ac328c29ebd193a, type: 3}
-    - {fileID: -918165724, guid: f83116c1939556142ac328c29ebd193a, type: 3}
-    - {fileID: -402394169, guid: f83116c1939556142ac328c29ebd193a, type: 3}
-    - {fileID: -709517484, guid: f83116c1939556142ac328c29ebd193a, type: 3}
-    - {fileID: 1646591686, guid: f83116c1939556142ac328c29ebd193a, type: 3}
-    - {fileID: -536276562, guid: f83116c1939556142ac328c29ebd193a, type: 3}
-    - {fileID: -1371112605, guid: f83116c1939556142ac328c29ebd193a, type: 3}
-    - {fileID: -1975665482, guid: f83116c1939556142ac328c29ebd193a, type: 3}
-    - {fileID: -2135555594, guid: f83116c1939556142ac328c29ebd193a, type: 3}
-    - {fileID: -62074270, guid: f83116c1939556142ac328c29ebd193a, type: 3}
+    - {fileID: 15614006, guid: 53d627ebdf324174c9c41c6067aee56a, type: 3}
+    - {fileID: -921698563, guid: 53d627ebdf324174c9c41c6067aee56a, type: 3}
+    - {fileID: 1849020823, guid: 53d627ebdf324174c9c41c6067aee56a, type: 3}
+    - {fileID: 990832741, guid: 53d627ebdf324174c9c41c6067aee56a, type: 3}
+    - {fileID: -1804295119, guid: 53d627ebdf324174c9c41c6067aee56a, type: 3}
+    - {fileID: -2071551588, guid: 53d627ebdf324174c9c41c6067aee56a, type: 3}
+    - {fileID: -53757177, guid: 53d627ebdf324174c9c41c6067aee56a, type: 3}
+    - {fileID: 769772800, guid: 53d627ebdf324174c9c41c6067aee56a, type: 3}
+    - {fileID: -1721088457, guid: 53d627ebdf324174c9c41c6067aee56a, type: 3}
+    - {fileID: -1259202124, guid: 53d627ebdf324174c9c41c6067aee56a, type: 3}
+    - {fileID: -654635481, guid: 53d627ebdf324174c9c41c6067aee56a, type: 3}
+    - {fileID: -1183062534, guid: 53d627ebdf324174c9c41c6067aee56a, type: 3}
+    - {fileID: 386100148, guid: 53d627ebdf324174c9c41c6067aee56a, type: 3}
     _loop: 1
     _allowNextClip: 0
     _onComplete:
@@ -139,9 +139,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0020697177, y: -0.31688726}
+  m_Offset: {x: -0.5811443, y: -0.006469766}
   serializedVersion: 2
-  m_Radius: 0.3130505
+  m_Radius: 1.2066817
 --- !u!114 &3364080266550431884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   _mode: 0
   _bound:
     _sentences:
-    - _valued: 'Press A and D '
+    - _valued: Press A and D for movement and Space for Jump
       _icon: {fileID: -89559100, guid: 89a5dff4cddf78d409101133bca9a696, type: 3}
       _side: 1
     _type: 0

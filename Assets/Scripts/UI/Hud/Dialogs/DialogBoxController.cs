@@ -44,8 +44,12 @@ public class DialogBoxController : MonoBehaviour
         _container.SetActive(true);
         _sfxSource.PlayOneShot(_open);
         _animator.SetBool(IsOpen, true);
+
+        
+        Invoke(nameof(HideDialogBox), 4f);
     }
 
+   
     private IEnumerator TypeDialogText()
     {
         CurrentContent.Text.text = string.Empty;
